@@ -1,27 +1,27 @@
 import { Component } from 'react';
 
 class Contador extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      number: props.number,
-    }
+      number: 0,
+    };
   }
 
   componentDidMount() {
-    console.log('se montó el componente');
+    /* console.log('se montó el componente'); */
 
     this.interval = setInterval(() => {
-      console.log('segundo');
+      /* console.log('segundo'); */
     }, 1000);
   }
 
   componentDidUpdate() {
-    console.log('se actualizó el componente');
+    /* console.log('se actualizó el componente'); */
   }
 
   componentWillUnmount() {
-    console.log('se desmontó el componente');
+    /* console.log('se desmontó el componente'); */
 
     clearInterval(this.interval);
   }
@@ -31,7 +31,7 @@ class Contador extends Component {
 
     this.setState({
       number: this.state.number + 1,
-    })
+    });
   }
 
   decrementar() {
@@ -39,17 +39,17 @@ class Contador extends Component {
 
     this.setState({
       number: this.state.number - 1,
-    })
+    });
   }
 
   render() {
     return (
       <div id="contador">
         <div>{this.state.number}</div>
-        <button onClick={() => this.incrementar()} >incrementar</button>
-        <button onClick={() => this.decrementar()} >decrementar</button>
+        <button onClick={() => this.decrementar()}>decrementar</button>
+        <button onClick={() => this.incrementar()}>incrementar</button>
       </div>
-    )
+    );
   }
 }
 

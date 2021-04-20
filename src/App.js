@@ -1,8 +1,10 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import Contador from './components/Contador';
+import Contador2 from './components/Contador2';
 
 function App() {
   const [show, setShow] = useState(false);
+  const [number, setNumber] = useState(0);
 
   const handleClick = () => {
     setShow(!show);
@@ -11,9 +13,9 @@ function App() {
   return (
     <div className="container py-5">
       <button onClick={() => handleClick()} className="mb-3">
-        Mostrar contador
+        {show ? 'Ocultar contador' : 'Mostrar contador'}
       </button>
-      {show ? <Contador number={0} /> : null}
+      {show ? <Contador2 number={number} setNumber={setNumber} /> : null}
     </div>
   );
 }
