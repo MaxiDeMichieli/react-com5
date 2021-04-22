@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import Contador from './components/Contador';
+/* import Contador from './components/Contador'; */
 import Contador2 from './components/Contador2';
+import Formulario1 from './components/Formulario1';
+import Formulario2 from './components/Formulario2';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -16,6 +18,8 @@ function App() {
         {show ? 'Ocultar contador' : 'Mostrar contador'}
       </button>
       {show ? <Contador2 number={number} setNumber={setNumber} /> : null}
+      <Formulario1 />
+      <Formulario2 />
     </div>
   );
 }
