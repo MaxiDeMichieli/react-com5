@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Formulario1 = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -21,8 +23,15 @@ const Formulario1 = () => {
     e.preventDefault();
     if (name && password) {
       console.log({ name, password });
+      history.push('/products');
     }
   };
+
+  /* [
+    '/products',
+    '/',
+    '/products'
+  ] */
 
   return (
     <div className="my-5">

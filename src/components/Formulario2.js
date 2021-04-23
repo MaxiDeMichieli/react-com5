@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Redirect } from 'react-router-dom';
 
 const Formulario2 = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [success, setSuccess] = useState(false);
 
   const validations = {
     name: {
@@ -32,6 +35,7 @@ const Formulario2 = () => {
 
   const submit = (data) => {
     console.log(data);
+    setSuccess(true);
   };
 
   return (
@@ -62,6 +66,7 @@ const Formulario2 = () => {
           Enviar
         </button>
       </form>
+      {success ? <Redirect to="/products" /> : null}
     </div>
   );
 };

@@ -1,59 +1,31 @@
-import { useState } from 'react';
-/* import Contador from './components/Contador'; */
-import Contador2 from './components/Contador2';
-import Formulario1 from './components/Formulario1';
-import Formulario2 from './components/Formulario2';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Home from './pages/Home';
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
+import Header from './components/Header';
 
-function App() {
-  const [show, setShow] = useState(false);
-  const [number, setNumber] = useState(0);
-
-  const handleClick = () => {
-    setShow(!show);
-  }
-
+const App = () => {
   return (
-    <div className="container py-5">
-      <button onClick={() => handleClick()} className="mb-3">
-        {show ? 'Ocultar contador' : 'Mostrar contador'}
-      </button>
-      {show ? <Contador2 number={number} setNumber={setNumber} /> : null}
-      <Formulario1 />
-      <Formulario2 />
-    </div>
-  );
-}
-
-/* class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      show: false,
-    }
-  }
-
-  handleClick() {
-    this.setState({
-      show: !this.state.show
-    })
-  }
-
-  render() {
-    return (
+    <BrowserRouter>
+      <Header />
       <div className="container py-5">
-        <button onClick={() => this.handleClick()} className="mb-3" >Mostrar contador</button>
-        {this.state.show ? <Contador number={0} /> : null}
+        <Switch>
+          <Route path="/" exact >
+            <Home />
+          </Route>
+          <Route path="/products/detail/:id" exact >
+            <ProductDetail />
+          </Route>
+          <Route path="/products" exact >
+            <Products />
+          </Route>
+          <Route path="/*" exact>
+            <Redirect to="/" />
+          </Route>
+        </Switch>
       </div>
-    );
-  }
-} */
-
-/* function App() {
-  return (
-    <div className="container py-5">
-      <Contador number={0} />
-    </div>
+    </BrowserRouter>
   );
-} */
+};
 
 export default App;
